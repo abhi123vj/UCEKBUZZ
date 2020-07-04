@@ -11,20 +11,15 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.SmoothScroller
 import com.abh16am.ucekbuzz.models.RowModel
 
 
-/**
- * Created by Shahbaz Hashmi on 26/04/19.
- */
 class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    /**
-     * flag to restrict expand / collapse action it is already expanding / collapsing
-     */
     private var actionLock = false
 
     class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +27,7 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
         internal var toggle_btn: ImageButton
 
         init {
+
             this.name_tv = itemView.findViewById(R.id.name_tv) as TextView
             this.toggle_btn = itemView.findViewById(R.id.toggle_btn) as ImageButton
         }
@@ -98,20 +94,25 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
                     }
 
                     if (row.isExpanded) {
+
+
+
+
                         p0.toggle_btn.background =
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_remove_circle_outline_black_24dp
+                                R.drawable.ic_baseline_keyboard_arrow_up_24
                             )
                     } else {
                         p0.toggle_btn.background =
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_control_point_black_24dp
+                                R.drawable.ic_baseline_keyboard_arrow_down_24
                             )
                     }
 
                     p0.toggle_btn.setOnClickListener {
+
                         if (!actionLock) {
                             actionLock = true
                             if (row.isExpanded) {
@@ -139,13 +140,13 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
                         p0.toggle_btn.background =
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_remove_circle_outline_black_24dp
+                                R.drawable.ic_baseline_keyboard_arrow_up_24
                             )
                     } else {
                         p0.toggle_btn.background =
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_control_point_black_24dp
+                                R.drawable.ic_baseline_keyboard_arrow_down_24
                             )
                     }
                 }
@@ -173,7 +174,8 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
                     try {
                         context.startActivity(newIntent)
                     } catch (e: ActivityNotFoundException) {
-                        Toast.makeText(this.context, " this is errorcatched ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this.context, " this is errorcatched ", Toast.LENGTH_SHORT)
+                            .show()
 
                     }
                 }
@@ -264,5 +266,6 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
 
 
     override fun getItemCount() = rowModels.size
+
 
 }

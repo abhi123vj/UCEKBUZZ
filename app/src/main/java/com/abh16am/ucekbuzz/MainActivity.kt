@@ -2,6 +2,10 @@ package com.abh16am.ucekbuzz
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +24,10 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : AppCompatActivity() {
     val TAG = "Tst"
 
+    lateinit var progressLayout: RelativeLayout
+
+    lateinit var progressBar: ProgressBar
+
     private lateinit var postReference: DatabaseReference
 
 
@@ -30,6 +38,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        progressLayout =findViewById(R.id.progressLayout)
+
+        progressBar = findViewById(R.id.progressBar)
+
+        progressLayout.visibility = VISIBLE
         recyclerView = findViewById(R.id.recycler_view)
         rows = mutableListOf()
         rowAdapter = RowAdapter(this, rows)
@@ -40,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             false
         )
 
+
         recyclerView.adapter = rowAdapter
 
         readdata()
@@ -48,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     private fun readdata() {
         postReference = Firebase.database.reference.child("Semester")
@@ -74,8 +89,7 @@ class MainActivity : AppCompatActivity() {
                     rows.add(RowModel(RowModel.COUNTRY, Semester("${data.key}", subjectList1)))
                 }
                 rowAdapter.notifyDataSetChanged()
-
-
+                progressLayout.visibility = GONE
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
