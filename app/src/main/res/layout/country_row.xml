@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
+    android:layout_marginTop="5dp"
+    android:elevation="4dp"
+
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <!--The weight sum property is used to divide the layout into
+        different parts and then giving each layout a particular weight
+        gives it that amount of space on the screen-->
+
+
+        <!--Since each parent layout will have a specific weight, we need
+        not give any width to those layout-->
+
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="5.6">
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:gravity=""
+                android:id="@+id/name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Name of the book"
+                android:textColor="#000000"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
+
+
+        <!--Many times we see that texts have an image along with them to
+        their right or left. This is added with the help of the
+        drawableLeft (or drawableRight and so on) attribute-->
+
+        <ImageButton
+            android:id="@+id/toggle_btn"
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:layout_marginRight="8dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_control_point_black_24dp"
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

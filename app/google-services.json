@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "653475546820",
+    "firebase_url": "https://ucek-buzz.firebaseio.com",
+    "project_id": "ucek-buzz",
+    "storage_bucket": "ucek-buzz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653475546820:android:8b8573d33f67a639ca6b91",
+        "android_client_info": {
+          "package_name": "com.abh16am.ucekbuzz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653475546820-1il76le53ct16a2tl7r7q443j4uknltr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abh16am.ucekbuzz",
+            "certificate_hash": "abb340df4f33752da82c17e483d6b24d0165789c"
+          }
+        },
+        {
+          "client_id": "653475546820-qhnn6oj12boev8j8v3m54h3vjv2807ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuJm-LK4s-g7PYJJTaljt0vBCKo6suHh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653475546820-qhnn6oj12boev8j8v3m54h3vjv2807ea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
