@@ -16,6 +16,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.abh16am.ucekbuzz.adapter.ModuleAdapter
 import com.abh16am.ucekbuzz.fragment.NotesFragment
 import com.abh16am.ucekbuzz.fragment.QuestionPaper
 import com.abh16am.ucekbuzz.fragment.UploadFile
@@ -134,4 +135,5 @@ class MainActivity : AppCompatActivity() {
             else -> super.onBackPressed()
         }
     }
+
 }
