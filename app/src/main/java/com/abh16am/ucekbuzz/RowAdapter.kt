@@ -14,11 +14,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SmoothScroller
+import com.abh16am.ucekbuzz.`interface`.OnItemClick
 import com.abh16am.ucekbuzz.models.RowModel
 
 
-class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val listener: OnItemClick, var flag : Int = 1) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     private var actionLock = false
 
@@ -86,6 +87,9 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
             RowModel.COUNTRY -> {
                 (p0 as CountryViewHolder).name_tv.setText(row.semester.name)
 
+
+
+
                 if (row.semester.subjectList == null || row.semester.subjectList!!.size == 0) {
                     p0.toggle_btn.visibility = View.GONE
                 } else {
@@ -94,10 +98,6 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
                     }
 
                     if (row.isExpanded) {
-
-
-
-
                         p0.toggle_btn.background =
                             ContextCompat.getDrawable(
                                 context,
@@ -128,6 +128,15 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>) :
             }
             RowModel.STATE -> {
                 (p0 as StateViewHolder).name_tv.setText(row.subject.name)
+
+                  p0.name_tv.setOnClickListener {
+                      listener.onClick(row.subject.name)
+                      println("this is country ${p0.name_tv}")
+                  }
+
+
+
+
 
                 if (row.subject.yearList == null || row.subject.yearList!!.size == 0) {
                     p0.toggle_btn.visibility = View.GONE

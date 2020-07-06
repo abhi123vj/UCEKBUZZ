@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abh16am.ucekbuzz.R
 import com.abh16am.ucekbuzz.RowAdapter
-import com.abh16am.ucekbuzz.models.RowModel
-import com.abh16am.ucekbuzz.models.Semester
-import com.abh16am.ucekbuzz.models.Subject
-import com.abh16am.ucekbuzz.models.Year
+import com.abh16am.ucekbuzz.`interface`.OnItemClick
+import com.abh16am.ucekbuzz.models.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,7 +23,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
-class QuestionPaper : Fragment() {
+class QuestionPaper : Fragment() ,OnItemClick{
     lateinit var progressLayout: RelativeLayout
 
     lateinit var progressBar: ProgressBar
@@ -50,7 +48,7 @@ class QuestionPaper : Fragment() {
         progressLayout.visibility = View.VISIBLE
         recyclerView = view.findViewById(R.id.recycler_view)
         rows = mutableListOf()
-        rowAdapter = RowAdapter(activity as Context, rows)
+        rowAdapter = RowAdapter(activity as Context, rows,this)
 
         recyclerView.layoutManager = LinearLayoutManager(
             activity as Context,
@@ -104,7 +102,15 @@ class QuestionPaper : Fragment() {
         postReference.addValueEventListener(postListener)
     }
 
-
+    override fun onClick(value: NotesModel) {
+        TODO("Not yet implemented")
     }
+
+    override fun onClick(value: String) {
+        TODO("Not yet implemented")
+    }
+
+
+}
 
 

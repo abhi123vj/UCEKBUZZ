@@ -47,7 +47,6 @@ class ModuleAdapter(
         holder.card.setOnClickListener {
             Toast.makeText(context, "Its toast! ${food.key}", Toast.LENGTH_SHORT).show()
             listener.onClick(food)
-
         }
     }
 }

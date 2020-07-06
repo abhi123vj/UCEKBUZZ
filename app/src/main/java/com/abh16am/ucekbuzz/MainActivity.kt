@@ -93,9 +93,11 @@ class MainActivity : AppCompatActivity() {
                             UploadFile()
                         )
                         .commit()
+                    supportActionBar?.title = "Upload"
                     drawerLayout.closeDrawers()
 
                 }
+
             }
 
             return@setNavigationItemSelectedListener true

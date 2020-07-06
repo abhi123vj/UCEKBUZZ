@@ -141,18 +141,21 @@ class NotesFragment : Fragment(), OnItemClick {
         }
 
         if(value.value!=""&&sem!=""){
-            println("thisda1 value is this 3 sub ${value.key}")
+            println("thisda1 value is this doooo${value.key}")
             sub =value.key
             val intent = Intent (this@NotesFragment.context, ModuleActivity::class.java)
             intent.putExtra("subject",sub)
             startActivity(intent)
             return
-
         }
 
         println("thisda1 value is this  ${value.key}")
 
 
+    }
+
+    override fun onClick(value: String) {
+        TODO("Not yet implemented")
     }
 
 
