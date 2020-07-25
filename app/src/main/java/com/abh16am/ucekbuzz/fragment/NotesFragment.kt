@@ -106,6 +106,8 @@ class NotesFragment : Fragment(), OnItemClick {
 
                 println("thisda key $tempnames")
 
+                recylerHome.visibility = View.VISIBLE
+
 
                 progressLayout.visibility = View.GONE
             }
@@ -152,10 +154,6 @@ class NotesFragment : Fragment(), OnItemClick {
         println("thisda1 value is this  ${value.key}")
 
 
-    }
-
-    override fun onClick(value: String) {
-        TODO("Not yet implemented")
     }
 
 

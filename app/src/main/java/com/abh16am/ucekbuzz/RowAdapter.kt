@@ -15,11 +15,17 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SmoothScroller
 import com.abh16am.ucekbuzz.`interface`.OnItemClick
+import com.abh16am.ucekbuzz.models.NotesModel
 import com.abh16am.ucekbuzz.models.RowModel
 
 
-class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val listener: OnItemClick, var flag : Int = 1) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class RowAdapter(
+    val context: Context,
+    var rowModels: MutableList<RowModel>,
+    val listener: OnItemClick,
+    var flag: Int = 1
+) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var actionLock = false
 
@@ -86,10 +92,6 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val
         when (row.type) {
             RowModel.COUNTRY -> {
                 (p0 as CountryViewHolder).name_tv.setText(row.semester.name)
-
-
-
-
                 if (row.semester.subjectList == null || row.semester.subjectList!!.size == 0) {
                     p0.toggle_btn.visibility = View.GONE
                 } else {
@@ -112,7 +114,6 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val
                     }
 
                     p0.toggle_btn.setOnClickListener {
-
                         if (!actionLock) {
                             actionLock = true
                             if (row.isExpanded) {
@@ -128,15 +129,14 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val
             }
             RowModel.STATE -> {
                 (p0 as StateViewHolder).name_tv.setText(row.subject.name)
+                p0.name_tv.setOnClickListener {
 
-                  p0.name_tv.setOnClickListener {
-                      listener.onClick(row.subject.name)
-                      println("this is country ${p0.name_tv}")
-                  }
-
-
-
-
+                    if (flag == 5) {
+                        val noteobj = NotesModel(row.subject.name, "SubjectNAme")
+                        listener.onClick(noteobj)
+                        println("this is country ${p0.name_tv}")
+                    }
+                }
 
                 if (row.subject.yearList == null || row.subject.yearList!!.size == 0) {
                     p0.toggle_btn.visibility = View.GONE
@@ -175,18 +175,24 @@ class RowAdapter(val context: Context, var rowModels: MutableList<RowModel>, val
             }
             RowModel.CITY -> {
                 (p0 as CityViewHolder).name_tv.setText(row.year.name)
+                if (flag == 6) {
+                    p0.toggle_btn.setBackgroundResource(R.drawable.ic_baseline_add_24)
+                }
                 p0.toggle_btn.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.setDataAndType(Uri.parse(row.year.link), "application/pdf")
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    val newIntent = Intent.createChooser(intent, "Open File")
-                    try {
-                        context.startActivity(newIntent)
-                    } catch (e: ActivityNotFoundException) {
-                        Toast.makeText(this.context, " this is errorcatched ", Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.setDataAndType(Uri.parse(row.year.link), intent.type)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        val newIntent = Intent.createChooser(intent, "Open File")
+                        try {
+                            context.startActivity(newIntent)
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(
+                                this.context,
+                                " this is errorcatched ",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
                 }
             }
         }

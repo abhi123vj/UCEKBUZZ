@@ -4,6 +4,4 @@ import com.abh16am.ucekbuzz.models.NotesModel
 
 interface OnItemClick {
     fun onClick(value: NotesModel)
-    fun onClick(value: String)
-
 }

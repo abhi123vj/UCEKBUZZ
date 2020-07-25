@@ -76,7 +76,6 @@ class QuestionPaper : Fragment() ,OnItemClick{
                 rows.clear()
                 // Get Post object and use the values to update the UI
                 for (data in dataSnapshot.children) {
-
                     val subjectList1: MutableList<Subject> = mutableListOf()
                     for (data2 in data.children) {
                         val yearList1: MutableList<Year> = mutableListOf()
@@ -106,9 +105,7 @@ class QuestionPaper : Fragment() ,OnItemClick{
         TODO("Not yet implemented")
     }
 
-    override fun onClick(value: String) {
-        TODO("Not yet implemented")
-    }
+
 
 
 }

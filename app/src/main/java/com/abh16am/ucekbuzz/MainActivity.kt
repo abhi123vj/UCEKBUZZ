@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abh16am.ucekbuzz.adapter.ModuleAdapter
+import com.abh16am.ucekbuzz.fragment.LoginFragment
 import com.abh16am.ucekbuzz.fragment.NotesFragment
 import com.abh16am.ucekbuzz.fragment.QuestionPaper
 import com.abh16am.ucekbuzz.fragment.UploadFile
@@ -25,6 +26,9 @@ import com.abh16am.ucekbuzz.models.Semester
 import com.abh16am.ucekbuzz.models.Subject
 import com.abh16am.ucekbuzz.models.Year
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -34,18 +38,18 @@ import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var drawerLayout: DrawerLayout
     lateinit var coordinatorLayout: CoordinatorLayout
     lateinit var toolbar: Toolbar
     lateinit var frameLayout: FrameLayout
     lateinit var navigationView: NavigationView
-
+    private  var flag = 0
     var previousMenuItem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         drawerLayout = findViewById(R.id.drawer_layout)
         coordinatorLayout = findViewById(R.id.coordinator_layout)
         toolbar = findViewById(R.id.toolbar)
@@ -97,13 +101,22 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.closeDrawers()
 
                 }
+                R.id.Login -> {
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.frame,
+                                LoginFragment()
+                            )
+                            .commit()
+                        supportActionBar?.title = "Logout"
+                        drawerLayout.closeDrawers()
+                }
 
             }
 
             return@setNavigationItemSelectedListener true
         }
     }
-
     fun setUpToolbar() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "UCEK BUZZ"

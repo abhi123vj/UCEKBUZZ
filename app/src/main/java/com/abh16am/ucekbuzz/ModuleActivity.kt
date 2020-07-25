@@ -56,8 +56,7 @@ class ModuleActivity : AppCompatActivity() ,OnItemClick{
         println("god")
         rows1 = mutableListOf()
 
-        rowAdapter = RowAdapter(this@ModuleActivity, rows1,this)
-
+        rowAdapter = RowAdapter(this@ModuleActivity, rows1,this,5)
 
 
 
@@ -120,8 +119,5 @@ class ModuleActivity : AppCompatActivity() ,OnItemClick{
         TODO("Not yet implemented")
     }
 
-    override fun onClick(value: String) {
-        TODO("Not yet implemented")
-    }
 
 }
